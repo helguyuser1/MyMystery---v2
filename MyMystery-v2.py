@@ -13,10 +13,10 @@ def getresult(api_url):
         resp.raise_for_status() 
         data = resp.json()
         return data.get("result"), data.get("url")
-    except requests.exceptions.RequestException as e:
-        print(f"Erro na requisição: {e}")
+    except requests.exceptions.RequestException as error:
+        print(f"$ Erro na requisição: {error}")
     except ValueError:
-        print("Erro ao decodificar a resposta JSON")
+        print("$ Erro ao decodificar o JSON")
     return None, None
 
 clear()
