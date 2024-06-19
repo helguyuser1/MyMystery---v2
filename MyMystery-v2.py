@@ -7,11 +7,11 @@ def clear():
         os.system('cls')  
     else:  
         os.system('clear')
-def get_result(api_url):
+def getresult(api_url):
     try:
-        response = requests.get(api_url)
-        response.raise_for_status() 
-        data = response.json()
+        resp = requests.get(api_url)
+        resp.raise_for_status() 
+        data = resp.json()
         return data.get("result"), data.get("url")
     except requests.exceptions.RequestException as e:
         print(f"Erro na requisição: {e}")
@@ -23,7 +23,7 @@ clear()
 banner='                                                                                                                                \n                ##############                    \n              ##################                  \n            ######          ######                \n            ####              ####                \n          ######                ####              \n          ####        MY         ####              \n          ####     MYSTERY.v2    ####              \n          ####                  ####                \n            ####              ####                \n            ######          ######                \n              ##################                  \n                  ##############                  \n                            ######                \n                              ######              \n                                ####              \n                                ######            \n                                  ######          \n                                    ####        '
 
 print(banner)
-print(f"                                        Versão Web: {F.YELLOW}instantusername.com/{F.RESET}")
+print(f"                                        Web Version: {F.YELLOW}instantusername.com/{F.RESET}")
 
 username = input(F.BLUE+F"[ {F.MAGENTA}? {F.BLUE}]{F.RESET} Username\n> ")
 
@@ -94,14 +94,14 @@ apis = {
 }
 clear()
 print(banner)
-print(f"                                        Versão Web: {F.YELLOW}instantusername.com/?q={username+F.RESET}\n")
+print(f"                                        Web Version: {F.YELLOW}instantusername.com/?q={username+F.RESET}\n")
 print(f"[{F.YELLOW}Yandex{F.RESET}] https://yandex.com/search/?text='{username}'")
 print(f"[{F.YELLOW}Google{F.RESET}] https://www.google.nl/search?q=inurl%3A{username}'")
 
 
 print("\n------------- + SEARCHING + -------------\n")
 for network, url in apis.items():
-    status, resurl = get_result(url)
+    status, resurl = getresult(url)
     if status is not None:
         if status == "taken":
             print(f"[{F.GREEN}Found{F.RESET}] {network} - {resurl}")
