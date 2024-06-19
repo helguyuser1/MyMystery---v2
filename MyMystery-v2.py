@@ -1,7 +1,7 @@
 import requests
 import os
 from colorama import Fore as F
-import fade
+
 def clear():
     if os.name == 'nt': 
         os.system('cls')  
